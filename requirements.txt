@@ -1,0 +1,7 @@
+xlrd
+xlutils
+xlwt
+tqdm
+openpyxl==3.0.4
+google_trans_new
+xlsxwriter
