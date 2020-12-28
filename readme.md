@@ -1,3 +1,6 @@
+## A python utility to convert xlsx and xls files from one language to another while trying to keep as much as possible struture and formatting.
+
+
 To run First time do 
 ` pip install -r requirements.txt `
 
@@ -16,7 +19,7 @@ other is compatibility file whichs remove formatting and maintain cell position 
 
 Mode 2 will give a xlsx file which will definitely open in excel though formatting is not sure in it
 
-Mode 3 first convert xlsx to xls keeping only the formatting that is backward compatible by ms and work on xls and is fastest
+Mode 3 first convert xlsx to xls keeping only the formatting that is backward compatible by ms and work on xls and is fastest Use this if file type is xls
 
 Mode 1 is preferred for use
 
