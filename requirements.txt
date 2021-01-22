@@ -1,7 +1,8 @@
-xlrd
+xlrd==1.2.0
 xlutils
 xlwt
 tqdm
 openpyxl==3.0.4
 google_trans_new
 xlsxwriter
+PySimpleGUI
