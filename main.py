@@ -9,7 +9,7 @@ from xlutils.copy import copy
 sg.theme("DarkTeal2")
 translator = google_translator()
 LANG_CODE = {'English': 'en', 'Spanish': 'es'}
-
+fltr="afltr"
 
 def get_sheet_names(faddr, fname, ext):
     if ext == 'xls':
@@ -43,8 +43,7 @@ def translate(dir_add, file_name, source, destination, sheets, window):
                 to_do_cell = []
                 for c, col in enumerate(rb_w.row_values(r)):
                     if type(col) == str:
-                        masked_cell = col.replace('Bancolombia', '@#@')
-                        masked_cell = masked_cell.replace('bancolombia', '@#@')
+                        masked_cell = col.replace(fltr, '@#@')
                         to_do_cell.append((r, c))
                         to_do = to_do + masked_cell + ' (*) '
                 to_do = translator.translate(to_do, lang_tgt=destination, lang_src=source)
@@ -55,7 +54,7 @@ def translate(dir_add, file_name, source, destination, sheets, window):
                 to_do = to_do.replace('@ #@', '@#@')
                 to_do = to_do.replace('@# @', '@#@')
                 for (r, c), v in zip(to_do_cell, to_do.split('(*)')):
-                    v = v.replace('@#@', "bancolombia")
+                    v = v.replace('@#@', fltr)
                     v = v.replace('(*)', '')
                     wb_w.write(r, c, v)
             window.close()
@@ -89,8 +88,7 @@ def translatex(dir_add, file_name, source, destination, sheets, window):
                     to_do_cell = []
                     for cell in row_cells:
                         if cell.value and type(cell.value) == str:
-                            masked_cell = cell.value.replace('Bancolombia', '@#@')
-                            masked_cell = masked_cell.replace('bancolombia', '@#@')
+                            masked_cell = cell.value.replace(fltr, '@#@')
                             to_do_cell.append(cell)
                             to_do = to_do + masked_cell + ' (*) '
                     # print(to_do)
@@ -103,7 +101,7 @@ def translatex(dir_add, file_name, source, destination, sheets, window):
                     to_do = to_do.replace('@# @', '@#@')
                     # print(to_do.split(' (*) '))
                     for cell, v in zip(to_do_cell, to_do.split('(*)')):
-                        v = v.replace('@#@', "bancolombia")
+                        v = v.replace('@#@', fltr)
                         v = v.replace('(*)', '')
                         cell.value = v
                 window.close()
